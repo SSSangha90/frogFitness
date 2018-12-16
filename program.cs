@@ -1,3 +1,4 @@
+
 using System;
 
 namespace Treehouse.FitnessFrog 
@@ -6,26 +7,24 @@ namespace Treehouse.FitnessFrog
   {
       static void Main()
       {
-        int runningTotal = 0;
-        bool keepGoing = true;
+        var runningTotal = 0.0;
+        // adding a decimal so the compiler knows it's a double
         
-        while (keepGoing) 
+        while (true) 
         {
           //Prompt the user for minutes exercise
           Console.Write("Enter how many minutes you exercised, or type \"quit\" to exit: ");
-          string entry = Console.ReadLine(); 
+          var entry = Console.ReadLine(); 
           
-          if (entry == "quit") 
+          if (entry.ToLower() == "quit") 
           {
-            keepGoing = false;
+            break;
           }
-          else
-          {
 
             try //the if/esle code block added within the try braces to ensure variables are mantained for the code to run - scope 
             {
             //Add minutes exercised to the total
-            int minutes = int.Parse(entry);
+            var minutes = double.Parse(entry);
               
                         if(minutes <= 0){
               Console.WriteLine("That's not acceptable.");
@@ -46,6 +45,7 @@ namespace Treehouse.FitnessFrog
             }
             
             runningTotal += minutes;
+              //syntaxical sugar
               
             }
             catch(FormatException) // incase the user inputs a value which is not an integer
@@ -56,9 +56,9 @@ namespace Treehouse.FitnessFrog
             
             //Display total minutes exercised to the screen for the week
             Console.WriteLine("You've entered " + runningTotal + " minutes");
-          }
           //Repeat until the user quits
         }
+        
         Console.WriteLine("Goodbye!");
       }
   }
